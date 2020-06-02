@@ -27,8 +27,13 @@ let phonebook = [
     number : "0986523467",
     id: 4
 
-}
+},
+{
 
+  name : "Eren jeager",
+  number : '6789998212',
+  id: 5
+}
 ]
 
 app.get('/api/persons',(req,res)=>{
