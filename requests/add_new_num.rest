@@ -1,8 +1,7 @@
 POST http://localhost:3001/api/persons
-
 Content-Type: application/json
 
 {
-    "name" : "Cristiano Ronaldo",
+    "name" : "Jerry Smith",
     "number" : "8765227288"
 }

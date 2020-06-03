@@ -1,7 +1,9 @@
 const express = require('express');
+let morgan = require('morgan');
 
 let app = express();
 app.use(express.json());
+app.use(morgan('tiny'));
 
 let phonebook = [
 
@@ -75,26 +77,33 @@ app.delete('/api/persons/:id',(req,res)=>{
 
 
   app.post('/api/persons',(req,res)=>{
-    const body = req.body
 
-  if (body.name === undefined){
-    return response.status(400).json({
+    const part = req.body
+
+  if (part.name === undefined){
+    return res.status(400).json({
         error: "name missing"
       });
   }
-  if(body.number === undefined){
-    return response.status(400).json({
+
+  if(part.number === undefined){
+    return res.status(400).json({
         error: "number missing"
       });
   }
+  
+ 
 
-  const person = new phonebook({
-    name: body.name,
-    number: body.number,
+
+  const person = {
+    name: part.name,
+    number: part.number,
     id: Math.floor(Math.random() * 100000)
-  });
+  };
 
-
+phonebook = phonebook.concat(person);
+console.log(person)
+res.json(person);
 
   })
 
